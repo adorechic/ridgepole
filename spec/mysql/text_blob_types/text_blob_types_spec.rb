@@ -1,4 +1,4 @@
-describe 'Ridgepole::Client (with new text/blob types)', condition: [:activerecord_5] do
+describe 'Ridgepole::Client (with new text/blob types)' do
   context 'when use new types' do
     subject { client }
 

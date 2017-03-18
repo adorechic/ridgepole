@@ -18,7 +18,7 @@ add_foreign_key "child", "parent", name: "child_ibfk_1", on_delete: :cascade
     let(:sorted_actual_dsl) {
       erbh(<<-EOS)
 create_table "child", force: :cascade do |t|
-  t.integer "parent_id" <%= condition(:activerecord_4) ? ', limit: 4' : '' %>
+  t.integer "parent_id"
 end
 
 <%= add_index "child", ["parent_id"], name: "par_id", using: :btree %>
@@ -33,7 +33,7 @@ add_foreign_key "child", "parent", name: "child_ibfk_1", on_delete: :cascade
     let(:expected_dsl) {
       erbh(<<-EOS)
 create_table "child", force: :cascade do |t|
-  t.integer "parent_id" <%= condition(:activerecord_4) ? ', limit: 4' : '' %>
+  t.integer "parent_id"
 end
 
 <%= add_index "child", ["parent_id"], name: "par_id", using: :btree %>

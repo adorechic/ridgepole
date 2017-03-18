@@ -5,16 +5,7 @@ describe 'Ridgepole::Client#dump' do
       salaries_pk: {primary_key: ["emp_no", "from_date"]},
     }
 
-    if condition(:mysql_awesome_enabled, :activerecord_5)
-      {limit: 4} >> opts[:employees_ext] if condition(:mysql_awesome_enabled)
-      {id: :integer} >> opts[:employees_ext]
-    end
-
-    if condition(:activerecord_4)
-      opts.merge!(
-        salaries_pk: {id: false}
-      )
-    end
+    {id: :integer} >> opts[:employees_ext]
 
     opts
   }

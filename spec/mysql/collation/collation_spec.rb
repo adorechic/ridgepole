@@ -1,4 +1,4 @@
-describe 'Ridgepole::Client#diff -> migrate', condition: [:mysql_awesome_enabled, :activerecord_5] do
+describe 'Ridgepole::Client#diff -> migrate' do
   context 'when change column (add collation)' do
     let(:actual_dsl) {
       erbh(<<-EOS)
@@ -134,7 +134,6 @@ describe 'Ridgepole::Client#diff -> migrate', condition: [:mysql_awesome_enabled
           f.flush
 
           opts = ['--dump-without-table-options']
-          opts << '--enable-mysql-awesome' if condition(:mysql_awesome_enabled)
           out, status = run_ridgepole('--diff', "'#{JSON.dump(conn_spec)}'", f.path, *opts)
 
           expect(out).to be_empty

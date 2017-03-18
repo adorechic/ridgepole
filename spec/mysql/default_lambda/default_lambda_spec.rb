@@ -1,4 +1,4 @@
-describe 'Ridgepole::Client (use default:lambda)', condition: [:activerecord_5] do
+describe 'Ridgepole::Client (use default:lambda)' do
   context 'when create table with default:lambda' do
     subject { client }
 

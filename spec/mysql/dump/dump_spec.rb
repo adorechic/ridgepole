@@ -14,24 +14,12 @@ describe 'Ridgepole::Client#dump' do
         titles_pk: {primary_key: ["emp_no", "title", "from_date"]},
       }
 
-      if condition(:mysql_awesome_enabled, :activerecord_5)
-        opts[:employees_ext].unshift(limit: 4) if condition(:mysql_awesome_enabled)
-        opts[:employees_ext].unshift(id: :integer)
+      opts[:employees_ext].unshift(id: :integer)
 
-        opts.merge!(
-          departments_ext: {id: :string, limit: 4},
-          unsigned: {unsigned: true}
-        )
-      end
-
-      if condition(:activerecord_4)
-        opts.merge!(
-          dept_manager_pk: {id: false},
-          dept_emp_pk: {id: false},
-          salaries_pk: {id: false},
-          titles_pk: {id: false}
-        )
-      end
+      opts.merge!(
+        departments_ext: {id: :string, limit: 4},
+        unsigned: {unsigned: true}
+      )
 
       opts
     }

@@ -1,14 +1,8 @@
-describe 'Ridgepole::Client#dump', condition: [:mysql_awesome_enabled, :activerecord_5] do
+describe 'Ridgepole::Client#dump' do
   let(:template_variables) {
     opts = {
       table_comment: {comment: '"london" bridge "is" falling "down"'},
     }
-
-    if condition(:activerecord_4)
-      opts.merge!(
-        table_comment: {}
-      )
-    end
 
     opts
   }
@@ -41,19 +35,6 @@ describe 'Ridgepole::Client#dump', condition: [:mysql_awesome_enabled, :activere
 
     it {
       expect(subject.dump).to match_fuzzy expected_dsl
-    }
-  end
-
-  context 'when with table options' do
-    before { subject.diff(actual_dsl).migrate }
-    subject { client(dump_without_table_options: false) }
-
-    it {
-      if condition(:activerecord_5)
-        skip
-      else
-        expect(subject.dump).to match_fuzzy actual_dsl
-      end
     }
   end
 end

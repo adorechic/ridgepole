@@ -1,4 +1,4 @@
-describe 'Ridgepole::Client#diff -> migrate', condition: [:activerecord_5] do
+describe 'Ridgepole::Client#diff -> migrate' do
   subject { client }
 
   before do

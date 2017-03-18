@@ -1,4 +1,4 @@
-describe 'Ridgepole::Client (with bigint pk)', condition: [:mysql_awesome_enabled, :activerecord_5] do
+describe 'Ridgepole::Client (with bigint pk)' do
   let(:dsl1) {
     erbh(<<-EOS)
       create_table "books", id: :primary_key, limit: 8, force: :cascade do |t|

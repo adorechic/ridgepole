@@ -6,22 +6,12 @@ describe 'Ridgepole::Client#diff -> migrate' do
       sql_uint_type: 'int(11)',
     }
 
-    if condition(:mysql_awesome_enabled)
-      opts.merge!(
-        sql_int_pk_type: 'int PRIMARY KEY AUTO_INCREMENT',
-        sql_int_type: 'int',
-        sql_uint_type: 'int unsigned'
-      )
-    end
-
-    if condition(:activerecord_5)
-      opts.merge!(
-        sql_int_pk_type: 'int AUTO_INCREMENT PRIMARY KEY',
-        sql_int_type: 'int',
-        sql_uint_type: 'int unsigned',
-        using_btree: 'USING btree'
-      )
-    end
+    opts.merge!(
+      sql_int_pk_type: 'int AUTO_INCREMENT PRIMARY KEY',
+      sql_int_type: 'int',
+      sql_uint_type: 'int unsigned',
+      using_btree: 'USING btree'
+    )
 
     opts
   }

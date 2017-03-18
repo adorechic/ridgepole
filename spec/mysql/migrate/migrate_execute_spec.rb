@@ -5,10 +5,6 @@ describe 'Ridgepole::Client#diff -> migrate' do
       test_schema: TEST_SCHEMA,
     }
 
-    if condition(:mysql_awesome_enabled)
-      opts[:sql_int_type] = 'int(10) unsigned'
-    end
-
     opts
   }
 

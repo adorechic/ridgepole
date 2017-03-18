@@ -4,12 +4,6 @@ describe 'Ridgepole::Client#diff -> migrate' do
       parent_id_opts: {},
     }
 
-    if condition(:mysql_awesome_enabled)
-      opts.merge!(
-        parent_id_opts: {unsigned: true}
-      )
-    end
-
     opts
   }
 

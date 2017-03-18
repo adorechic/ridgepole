@@ -6,16 +6,9 @@ describe 'Ridgepole::Client.dump' do
     let(:options) {
       opts = {}
 
-      if condition(:mysql_awesome_enabled)
-        opts.merge!(
-          enable_mysql_awesome: true,
-          dump_without_table_options: true
-        )
-      elsif condition(:activerecord_5)
-        opts.merge!(
-          dump_without_table_options: true
-        )
-      end
+      opts.merge!(
+        dump_without_table_options: true
+      )
 
       opts
     }
@@ -31,24 +24,12 @@ describe 'Ridgepole::Client.dump' do
         titles_pk: {primary_key: ["emp_no", "title", "from_date"]},
       }
 
-      if condition(:mysql_awesome_enabled, :activerecord_5)
-        {limit: 4} >> opts[:employees_ext] if condition(:mysql_awesome_enabled)
-        {id: :integer} >> opts[:employees_ext]
+      {id: :integer} >> opts[:employees_ext]
 
-        opts.merge!(
-          departments_ext: {id: :string, limit: 4},
-          unsigned: {unsigned: true}
-        )
-      end
-
-      if condition(:activerecord_4)
-        opts.merge!(
-          dept_manager_pk: {id: false},
-          dept_emp_pk: {id: false},
-          salaries_pk: {id: false},
-          titles_pk: {id: false}
-        )
-      end
+      opts.merge!(
+        departments_ext: {id: :string, limit: 4},
+        unsigned: {unsigned: true}
+      )
 
       opts
     }

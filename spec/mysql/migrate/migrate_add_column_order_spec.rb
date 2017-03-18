@@ -4,11 +4,9 @@ describe 'Ridgepole::Client#diff -> migrate' do
       sql_int_type: 'int(11)',
     }
 
-    if condition(:mysql_awesome_enabled, :activerecord_5)
-      opts.merge!(
-        sql_int_type: 'int'
-      )
-    end
+    opts.merge!(
+      sql_int_type: 'int'
+    )
 
     opts
   }
@@ -182,8 +180,6 @@ describe 'Ridgepole::Client#diff -> migrate' do
     subject { client }
 
     it {
-      skip if condition(:activerecord_4)
-
       delta = subject.diff(expected_dsl)
       expect(delta.differ?).to be_truthy
       expect(subject.dump).to match_fuzzy actual_dsl
@@ -234,8 +230,6 @@ describe 'Ridgepole::Client#diff -> migrate' do
     subject { client }
 
     it {
-      skip if condition(:activerecord_4)
-
       delta = subject.diff(expected_dsl)
       expect(delta.differ?).to be_truthy
       expect(subject.dump).to match_fuzzy actual_dsl

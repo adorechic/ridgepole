@@ -1,4 +1,4 @@
-describe 'Ridgepole::Client#diff -> migrate', condition: [:activerecord_5] do
+describe 'Ridgepole::Client#diff -> migrate' do
   context 'when change column (add comment)' do
     let(:actual_dsl) {
       <<-EOS
