@@ -147,7 +147,7 @@ class Ridgepole::Diff
       priv_column_name = column_name
     end
 
-    if self.class.postgresql?
+    if Ridgepole::ConnectionAdapters.postgresql?
       added_size = 0
       to.reverse_each.with_index do |(column_name, to_attrs), i|
         if to_attrs[:options].delete(:after)
@@ -399,7 +399,4 @@ class Ridgepole::Diff
     diffy.to_s(:text).gsub(/\s+\z/m, '')
   end
 
-  def self.postgresql?
-    defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) && ActiveRecord::Base.connection.is_a?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter)
-  end
 end
