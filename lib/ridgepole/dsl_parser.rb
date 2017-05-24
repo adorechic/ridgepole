@@ -212,6 +212,10 @@ class Ridgepole::DSLParser
       }
     end
 
+    def add_synonym(name, to_table, options = {})
+      # Nothing
+    end
+
     def add_foreign_key(from_table, to_table, options = {})
       unless options[:name]
         raise "Foreign key name in `#{from_table}` is undefined"
