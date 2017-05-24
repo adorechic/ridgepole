@@ -58,6 +58,10 @@ class Ridgepole::DSLParser
         :bit,
         :bit_varying,
         :money,
+
+        # https://github.com/rsim/oracle-enhanced/blob/v1.8.1/lib/active_record/connection_adapters/oracle_enhanced_adapter.rb
+        :primary_key,
+        :raw,
       ].uniq
 
       TYPES.each do |column_type|
