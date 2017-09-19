@@ -21,6 +21,10 @@ class Ridgepole::DSLParser
       [ctx.__definition, ctx.__execute]
     end
 
+    def add_synonym(name, to_table, options = {})
+      # Ignore synonyms
+    end
+
     def create_table(table_name, options = {})
       table_name = table_name.to_s
       table_definition = TableDefinition.new(table_name, self)
